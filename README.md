@@ -41,7 +41,7 @@ Adapter sits between WebAssembly/JavaScript runtime and IDE. As soon as protocol
 1. This solution is IDE agnostic, the same protocol adapter may be used with any IDE which supports DevTools protocol.
 1. Protocol adapter should be able to work without connection to WebAssembly runtime to support static analysis tool, it may be harder to implement but at the same time these tools will use the same protocol as IDE use.
 ### Disadvantages
-1. This approach is even more rely on third party implementation, proper implementing adapter may require detailed knowledge about IDE implementation details.
+1. This approach relies more on third party implementation, proper implementing adapter may require knowledge about IDE implementation details.
 2. It may be hard to map original language primitives to WebAssembly/JavaScript primitives.
 
 ## Action items
