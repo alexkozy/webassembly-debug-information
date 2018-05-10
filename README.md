@@ -16,8 +16,7 @@ As part of this proposal we need to specify two different APIs:
 * API for IDEs:
   * sets of methods which IDE may use to provide debugging experience in terms of original language.
 ### How does it work?
-IDE receive some location from runtime using DevTools protocol. It goes to service and ask it about any existing mapping from this raw location to some better location. Service may return location inside original source code. IDE detects that it gets location in this source first time and additionaly request original source file from service.
-User set breakpoint. IDE goes to 
+IDE receives some location from runtime using DevTools protocol. It goes to service and ask it about any existing mapping from this raw location to some better location. Service may return location inside original source code. IDE detects that it gets location in some new source file and additionaly request original source file from service.
 ### Advantages
 1. In modern ecosystem a lot of IDEs (e.g. VSCode, WebStorm) use DevTools protocol (mostly Runtime and Debugger domains) to debug JavaScript, so adding support for new WebAssembly domain should be easy for them.
 1. It is not required to specify debug information format which will support all existing languages and will be extensible enough to support future languages, with this proposal C/C++ may use something on top of DWARF, JVM languages may prefer some other format. WASM should only have some kind of reference implementation that other developers may use as an example.
@@ -31,8 +30,7 @@ User set breakpoint. IDE goes to
 1. If we allow service to have connection to WASM runtime then some part of services can be used as part of static analysis tool and some of them can not.
 1. Two APIs is more then one static format.
 1. Reliance on third party implementation of debug information service.
-1. Most likely designing universal IDE API is only a little less complex then designing universal debug information format (since we have less IDEs than languages) and we can end up with only reference implementation of debug information service for couple IDEs.
-1. Adding language specific features for IDE API requires additional process.
+1. Most likely designing universal IDE API is only a little less complex then designing universal debug information format (since we have less IDEs than languages). Insted of building spec for this API we can only provide developers with reference implementation.
 
 ## Proposed architecture B
 ![overview](https://raw.githubusercontent.com/ak239/webassembly-debug-information/master/overview-b.png?token=AAaBsp4XmbD-HUYXDuINSU58l8j-YMxUks5a_ZAiwA%3D%3D)
