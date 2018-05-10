@@ -7,8 +7,8 @@
 
 ## Proposed architecture
 ![overview](https://raw.githubusercontent.com/ak239/webassembly-debug-information/master/overview.png?token=AAaBsp4XmbD-HUYXDuINSU58l8j-YMxUks5a_ZAiwA%3D%3D)
-<br/>
-<br/>
+
+
 As part of this proposal we need to specify two different APIs:
 * WebAssembly runtime API exposed in raw terms without any knowledge about original language:
   * something for memory/current stack inspection,
@@ -16,8 +16,6 @@ As part of this proposal we need to specify two different APIs:
   * something for compiled WebAssembly bytecode execution.
 * API for IDEs:
   * sets of methods which IDE may use to provide debugging experience in terms of original language.
-<br/>
-<br/>
 ### Advantages
 1. In modern ecosystem a lot of IDEs (e.g. VSCode, WebStorm) use DevTools protocol (mostly Runtime and Debugger domains) to debug JavaScript, so adding support for new WebAssembly domain should be easy for them.
 1. It is not required to specify debug information format which will support all existing languages and will be extensible enough to support future languages, with this proposal C/C++ may use something on top of DWARF, JVM languages may prefer some other format. WASM should only have some kind of reference implementation that other developers may use as an example.
